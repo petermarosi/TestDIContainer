@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<People>
+  <Person>
+    <Name>Name1</Name>
+    <Address>Address1</Address>
+  </Person>
+  <Person>
+    <Name>Name2</Name>
+    <Address>Address2</Address>
+  </Person>
+</People>
+

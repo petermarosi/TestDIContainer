@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34302.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicApp.PoorMansDI", "TestDIContainer\BasicApp.PoorMansDI.csproj", "{30F84C77-5A48-4347-B99F-343CF692B07D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicApp.PoorMansDI", "BasicApp.PoorMansDI\BasicApp.PoorMansDI.csproj", "{30F84C77-5A48-4347-B99F-343CF692B07D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer.Test", "DataAccessLayer.Test\DataAccessLayer.Test.csproj", "{4C13943C-4DF8-4518-910F-FA3D7F86100F}"
 EndProject

@@ -5,11 +5,11 @@ VisualStudioVersion = 17.7.34302.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicApp.PoorMansDI", "TestDIContainer\BasicApp.PoorMansDI.csproj", "{30F84C77-5A48-4347-B99F-343CF692B07D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer.Test", "XmlReader.Test\DataAccessLayer.Test.csproj", "{4C13943C-4DF8-4518-910F-FA3D7F86100F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer.Test", "DataAccessLayer.Test\DataAccessLayer.Test.csproj", "{4C13943C-4DF8-4518-910F-FA3D7F86100F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "XmlReader\DataAccessLayer.csproj", "{35113980-E6CC-4601-BBD2-6414F047ECE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{35113980-E6CC-4601-BBD2-6414F047ECE0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer.Interface", "XmlReader.Interface\DataAccessLayer.Interface.csproj", "{F5361B9A-11EA-4FD0-AC68-34C257EC0E48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer.Interface", "DataAccessLayer.Interface\DataAccessLayer.Interface.csproj", "{F5361B9A-11EA-4FD0-AC68-34C257EC0E48}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{806133B2-1D92-40CD-A2AB-53546BFCC520}"
 EndProject
@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationLayer", "Presen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicApp.DIContainer", "BasicApp.DIContainer\BasicApp.DIContainer.csproj", "{01F59293-49FB-4711-83A2-DB97A49B858F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonServices", "CommonServices\CommonServices.csproj", "{0E54A7D3-8DC0-4A7C-9D8E-6558DE673377}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonServices", "CommonServices\CommonServices.csproj", "{0E54A7D3-8DC0-4A7C-9D8E-6558DE673377}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

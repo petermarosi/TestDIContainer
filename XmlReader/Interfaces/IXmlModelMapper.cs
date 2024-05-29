@@ -2,5 +2,5 @@
 
 public interface IXmlModelMapper<out T> where T : class
 {
-    IQueryable<T> GetModels(string filePath, string modelName);
+    IEnumerable<T> GetModels(string filePath, string modelName);
 }

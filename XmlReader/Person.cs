@@ -12,6 +12,4 @@ internal class Person : IPerson
         Name = name;
         Address = address;
     }
-
-    public string GetName() => Name;
 }

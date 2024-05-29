@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer;
+using CommonServices;
 using DataAccessLayer;
 using Microsoft.Extensions.DependencyInjection;
 using PresentationLayer;
@@ -11,6 +12,7 @@ IFileSystem fileSystem = new FileSystem();
 services
     //DAL
     .AddTransientBasicXmlReader(fileSystem)
+    .AddTransientPersonFactory()
     .AddTransientXmlPersonMapper()
     .AddTransientPersonRepository(fileSystem)
     //BLL
@@ -18,9 +20,14 @@ services
     //PL
     .AddTransientConsolePersonWriter();
 
+//Common services
+services.AddSingleton<ILogger, Logger>();
+
 IServiceProvider provider = services.BuildServiceProvider();
 
 IConsolePersonWriter personWriter = provider.GetRequiredService<IConsolePersonWriter>();
+ILogger logger = provider.GetRequiredService<ILogger>();
 
 personWriter.WriteAll(person => person.Name);
 personWriter.WriteAll(person => person.Address);
+logger.PrintAllMessages();

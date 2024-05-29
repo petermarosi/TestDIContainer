@@ -17,7 +17,7 @@ internal class BasicXmlReader : IBasicXmlReader
     public IEnumerable<XElement> ReadElement(string filePath, string elementName)
     {
         using Stream stream = _fileSystem.File.OpenRead(filePath);
-        System.Xml.XmlReader reader = System.Xml.XmlReader.Create(stream);
+        XmlReader reader = XmlReader.Create(stream);
 
         reader.MoveToContent();
         reader.Read();

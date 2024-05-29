@@ -5,12 +5,12 @@ namespace BusinessLogicLayer;
 
 internal class PersonService : IPersonService
 {
-    private readonly IPersonRepository _personRepository;
+    private readonly List<IPerson> _people;
 
     public PersonService(IPersonRepository personRepository)
     {
-        _personRepository = personRepository;
+        _people = personRepository.List().ToList();
     }
 
-    public List<IPerson> GetAllPerson() => _personRepository.List().ToList();
+    public List<IPerson> GetAllPerson() => _people;
 }

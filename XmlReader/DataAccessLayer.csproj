@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommonServices\CommonServices.csproj" />
     <ProjectReference Include="..\XmlReader.Interface\DataAccessLayer.Interface.csproj" />
   </ItemGroup>
 

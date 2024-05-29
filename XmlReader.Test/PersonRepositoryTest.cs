@@ -37,7 +37,8 @@ internal class PersonRepositoryTest
         IPersonRepository personRepository = new PersonRepository(
             new PersonContext(fileSystem, "xmlFile.xml", 
                 new XmlPersonMapper(
-                    new BasicXmlReader(fileSystem))));
+                    new BasicXmlReader(fileSystem),
+                    new PersonFactory())));
         
         //Act
         IPerson[] result = personRepository.List().ToArray();

@@ -3,13 +3,18 @@ using BusinessLogicLayer.Interface;
 using DataAccessLayer.Interface;
 using PresentationLayer.Interface;
 
+using static BusinessLogicLayer.ServiceCollectionExtension;
+using static DataAccessLayer.ServiceCollectionExtension;
+using static PresentationLayer.ServiceCollectionExtension;
+
 //DAL
-IPersonRepository personRepository = DataAccessLayer.CompositeRoot.CreatePersonRepository(new FileSystem());
+IPersonRepository personRepository = CreatePersonRepository(new FileSystem());
 
 //BLL
-IPersonService personService = BusinessLogicLayer.CompositeRoot.CreatePersonService(personRepository);
+IPersonService personService = CreatePersonService(personRepository);
 
 //PL
-IConsoleWriter personConsoleWriter = PresentationLayer.CompositeRoot.CreatePersonConsoleWriter(personService);
+IConsolePersonWriter personConsolePersonWriter = CreatePersonConsoleWriter(personService);
 
-personConsoleWriter.Write();
+personConsolePersonWriter.WriteAll(person => person.Name);
+personConsolePersonWriter.WriteAll(person => person.Address);

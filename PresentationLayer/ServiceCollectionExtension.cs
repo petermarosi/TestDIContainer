@@ -1,14 +1,22 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using BusinessLogicLayer.Interface;
+using Microsoft.Extensions.DependencyInjection;
 using PresentationLayer.Interface;
 
 namespace PresentationLayer;
 
 public static class ServiceCollectionExtension
 {
-    public static IServiceCollection AddConsolePersonWriter(this IServiceCollection services)
+    //DI container
+    public static IServiceCollection AddTransientConsolePersonWriter(this IServiceCollection services)
     {
-        services.AddTransient<IConsoleWriter, ConsolePersonWriter>();
+        services.AddTransient<IConsolePersonWriter, ConsolePersonPersonWriter>();
 
         return services;
+    }
+
+    //Poor man's DI
+    public static IConsolePersonWriter CreatePersonConsoleWriter(IPersonService personService)
+    {
+        return new ConsolePersonPersonWriter(personService);
     }
 }

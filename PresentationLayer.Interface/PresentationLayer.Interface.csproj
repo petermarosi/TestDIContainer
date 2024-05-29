@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\XmlReader.Interface\DataAccessLayer.Interface.csproj" />
+  </ItemGroup>
+
 </Project>

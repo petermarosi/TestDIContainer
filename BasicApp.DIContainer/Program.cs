@@ -6,17 +6,21 @@ using PresentationLayer.Interface;
 using System.IO.Abstractions;
 
 ServiceCollection services = new();
+IFileSystem fileSystem = new FileSystem();
 
 services
     //DAL
-    .AddPersonRepository(new FileSystem())
+    .AddTransientBasicXmlReader(fileSystem)
+    .AddTransientXmlPersonMapper()
+    .AddTransientPersonRepository(fileSystem)
     //BLL
-    .AddPersonService()
+    .AddTransientPersonService()
     //PL
-    .AddConsolePersonWriter();
+    .AddTransientConsolePersonWriter();
 
 IServiceProvider provider = services.BuildServiceProvider();
 
-IConsoleWriter writer = provider.GetRequiredService<IConsoleWriter>();
+IConsolePersonWriter personWriter = provider.GetRequiredService<IConsolePersonWriter>();
 
-writer.Write();
+personWriter.WriteAll(person => person.Name);
+personWriter.WriteAll(person => person.Address);

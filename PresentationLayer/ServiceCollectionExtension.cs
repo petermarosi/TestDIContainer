@@ -7,7 +7,7 @@ namespace PresentationLayer;
 public static class ServiceCollectionExtension
 {
     //DI container
-    public static IServiceCollection AddTransientConsolePersonWriter(this IServiceCollection services)
+    public static IServiceCollection AddPlInternalServices(this IServiceCollection services)
     {
         services.AddTransient<IConsolePersonWriter, ConsolePersonPersonWriter>();
 

@@ -7,21 +7,16 @@ using PresentationLayer.Interface;
 using System.IO.Abstractions;
 
 ServiceCollection services = new();
-IFileSystem fileSystem = new FileSystem();
 
+//Add internal services
 services
-    //DAL
-    .AddTransientBasicXmlReader(fileSystem)
-    .AddTransientPersonFactory()
-    .AddTransientXmlPersonMapper()
-    .AddTransientPersonRepository(fileSystem)
-    //BLL
-    .AddTransientPersonService()
-    //PL
-    .AddTransientConsolePersonWriter();
+    .AddDalInternalServices()
+    .AddBllInternalServices()
+    .AddPlInternalServices();
 
 //Common services
 services.AddSingleton<ILogger, Logger>();
+services.AddSingleton<IFileSystem, FileSystem>();
 
 IServiceProvider provider = services.BuildServiceProvider();
 

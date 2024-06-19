@@ -7,7 +7,7 @@ namespace BusinessLogicLayer;
 public static class ServiceCollectionExtension
 {
     //DI container
-    public static IServiceCollection AddTransientPersonService(this IServiceCollection services)
+    public static IServiceCollection AddBllInternalServices(this IServiceCollection services)
     {
         services.AddTransient<IPersonService, PersonService>();
 

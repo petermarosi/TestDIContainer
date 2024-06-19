@@ -10,37 +10,18 @@ namespace DataAccessLayer;
 public static class ServiceCollectionExtension
 {
     //DI container
-    public static IServiceCollection AddTransientBasicXmlReader(this IServiceCollection services, IFileSystem fileSystem)
+    public static IServiceCollection AddDalInternalServices(this IServiceCollection services)
     {
-        services.AddTransient<IBasicXmlReader>(_ => new BasicXmlReader(fileSystem));
-        
-        return services;
-    }
-
-    public static IServiceCollection AddTransientPersonFactory(this IServiceCollection services)
-    {
-        services.AddTransient<IPersonFactory>(s => new PersonFactoryProxy(
-            new PersonFactory(),
-            s.GetRequiredService<ILogger>()));
-
-        return services;
-    }
-
-    public static IServiceCollection AddTransientXmlPersonMapper(this IServiceCollection services)
-    {
-        services.AddTransient<IXmlModelMapper<IPerson>>(s => new XmlPersonMapper(
-            s.GetRequiredService<IBasicXmlReader>(),
-            s.GetRequiredService<IPersonFactory>()));
-
-        return services;
-    }
-
-    public static IServiceCollection AddTransientPersonRepository(this IServiceCollection services, IFileSystem fileSystem)
-    {
-        services.AddTransient<IPersonRepository>(s => new PersonRepository(new PersonContext(
-            fileSystem,
-            "XMLFile1.xml",
-            s.GetRequiredService<IXmlModelMapper<IPerson>>())));
+        services
+            .AddTransient<IBasicXmlReader, BasicXmlReader>()
+            .AddTransient<IPersonFactory, PersonFactory>()
+            //Decorate is Scrutor feature, PersonFactory needs to be defined first to be able to decorate it
+            .Decorate<IPersonFactory, PersonFactoryLoggerDecorator>()
+            .AddTransient<IXmlModelMapper<IPerson>, XmlPersonMapper>()
+            .AddTransient<IPersonRepository>(s => new PersonRepository(new PersonContext(
+                s.GetRequiredService<IFileSystem>(),
+                "XMLFile1.xml",
+                s.GetRequiredService<IXmlModelMapper<IPerson>>())));
 
         return services;
     }
@@ -52,6 +33,6 @@ public static class ServiceCollectionExtension
             new PersonContext(fileSystem, "XMLFile1.xml",
                 new XmlPersonMapper(
                     new BasicXmlReader(fileSystem),
-                    new PersonFactoryProxy(new PersonFactory(), logger))));
+                    new PersonFactoryLoggerDecorator(new PersonFactory(), logger))));
     }
 }

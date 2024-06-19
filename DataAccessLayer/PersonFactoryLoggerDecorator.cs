@@ -4,12 +4,12 @@ using DataAccessLayer.Interfaces;
 
 namespace DataAccessLayer;
 
-internal class PersonFactoryProxy : IPersonFactory
+internal class PersonFactoryLoggerDecorator : IPersonFactory
 {
     private readonly IPersonFactory _personFactory;
     private readonly ILogger _logger;
 
-    public PersonFactoryProxy(IPersonFactory personFactory, ILogger logger)
+    public PersonFactoryLoggerDecorator(IPersonFactory personFactory, ILogger logger)
     {
         _personFactory = personFactory;
         _logger = logger;
